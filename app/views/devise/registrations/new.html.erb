@@ -1,25 +1,71 @@
-<h2>Sign up</h2>
+<h2>新規会員登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+<div class="row">
+  <div class="field col-xs-4 col-xs-offset-5">
+    <span>名前</span>
+    <%= f.label '(姓)' %>
+    <%= f.text_field :family_name_kanji, autofocus: true, autocomplete: "family_name_kanji" %>
+    <%= f.label '(名)' %>
+    <%= f.text_field :first_name_kanji, autofocus: true, autocomplete: "first_name_kanji" %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="field col-xs-4">
+    <span>フリガナ</span>
+    <%= f.label '(セイ)' %>
+    <%= f.text_field :family_name_kanji, autofocus: true, autocomplete: "family_name_kanji" %>
+    <%= f.label '(メイ)' %>
+    <%= f.text_field :first_name_kanji, autofocus: true, autocomplete: "first_name_kanji" %>
+  </div>
+</div>
+
+<div class="row">
   <div class="field">
-    <%= f.label :email %><br />
+    <span>メールアドレス</span>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+</div>
 
+<div class="row">
+  <div class="field">
+    <span>郵便番号(ハイフンなし)</span>
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="field">
+    <span>住所</span>
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="field">
+    <span>電話番号(ハイフンなし)</span>
+    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
+  </div>
+</div>
+
+<div class="row">
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
+</div>
 
+<div class="row">
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+</div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
