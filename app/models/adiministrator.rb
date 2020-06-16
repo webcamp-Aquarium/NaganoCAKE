@@ -1,0 +1,2 @@
+class Adiministrator < ApplicationRecord
+end
