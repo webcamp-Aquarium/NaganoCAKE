@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_023457) do
     t.integer "customer_id"
     t.integer "product_id"
     t.integer "number", default: 1, null: false
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
