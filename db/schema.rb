@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_061141) do
     t.integer "customer_id"
     t.integer "product_id"
     t.integer "number", default: 1, null: false
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_061141) do
     t.integer "customer_id"
     t.integer "status", default: 1, null: false
     t.integer "payment"
-    t.string "potal_code"
+    t.string "postal_code"
     t.string "address"
     t.string "name"
     t.integer "total_fee"
