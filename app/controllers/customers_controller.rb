@@ -10,14 +10,18 @@ class CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.save(customer_params)
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer)
+    else
+      render :edit
+    end
   end
 
   def leave
   end
 
   def hide
-    @customer = Customer.find_by(id: params[:id])
+    @customer = Customer.find(params[:id])
     if @customer.update(is_status: false)
       redirect_to root_path
     else
@@ -26,11 +30,13 @@ class CustomersController < ApplicationController
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:family_name_kanji,
                                               :first_name_kanji,
                                               :family_name_kana,
                                               :first_name_kana,
+                                              :email,
                                               :postal_code,
                                               :address,
                                               :phone,
