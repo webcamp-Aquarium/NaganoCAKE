@@ -4,6 +4,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(params[:id])
   end
 
   def edit
@@ -12,4 +13,7 @@ class Admin::CustomersController < ApplicationController
   def update
   end
 
+  def full_name(resource)
+    resource.family_name_kanji + resource.first_name_kanji
+  end
 end
