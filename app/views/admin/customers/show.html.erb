@@ -4,11 +4,7 @@
   <p class="col-xs-2">顧客ID</p>
   <%= @customer.id %>
   <span class="btn-info btn-xs">
-    <% if @customer.is_status == true %>
-    有効会員
-    <% else %>
-    退会済会員
-    <% end %>
+    <%= @customer.is_status %>会員
   </span>
 </div>
 <div class="row">
