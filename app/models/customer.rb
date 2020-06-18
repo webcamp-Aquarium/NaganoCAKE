@@ -6,4 +6,6 @@ class Customer < ApplicationRecord
 
   has_many :shippings, dependent: :destroy
   has_many :cart_items, dependent: :destroy
+
+  enum is_status: {有効: true, 退会済: false}
 end
