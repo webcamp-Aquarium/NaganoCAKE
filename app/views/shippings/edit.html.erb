@@ -1,5 +1,5 @@
 <h2>配送先編集</h2>
-<%=	form_for	@shipping, url: { action: "create"}	do |f| %>
+<%=	form_for	@shipping, url: { action: "update"}	do |f| %>
 	<div class="row">
 		<div class="field">
 			<span class="col-xs-3">郵便番号(ハイフンなし)</span>
@@ -16,9 +16,9 @@
 		<div class="field">
 			<span class="col-xs-3">宛名</span>
 			<span class="col-xs-3">
-				<%= f.text_field :postal_code, autofocus: true, autocomplete: "name" %></span>
-			<span class="col-xs-3 col-xs-offset-4 action">
-				<%= f.submit "登録する",class:"btn btn-success" %>
+				<%= f.text_field :name, autofocus: true, autocomplete: "name" %></span>
+			<span class="col-xs-3 action">
+				<%= f.submit "編集する",class:"btn btn-primary" %>
 			</span>
 		</div>
 	</div>

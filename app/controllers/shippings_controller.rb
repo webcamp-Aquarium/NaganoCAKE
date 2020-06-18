@@ -5,8 +5,9 @@ class ShippingsController < ApplicationController
 	end
 	def create
 		@shipping = Shipping.new(shipping_params)
-		@shipping.customer_id = current_user.id
+		@shipping.customer_id = current_customer.id
 		@shipping.save
+		redirect_to new_shipping_path
 	end
 
 	def edit

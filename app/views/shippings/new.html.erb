@@ -6,31 +6,31 @@
 			<span class="col-xs-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></span>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row"><br>
 		<div class="field">
 			<span class="col-xs-3">住所</span>
-			<span class="col-xs-7"><%= f.text_field :address, autofocus: true, autocomplete: "address" %></span>
+			<span class="col-xs-7"><%= f.text_field :address,:size=>"50",autofocus: true, autocomplete: "address" %></span>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row"><br>
 		<div class="field">
 			<span class="col-xs-3">宛名</span>
 			<span class="col-xs-3">
-				<%= f.text_field :postal_code, autofocus: true, autocomplete: "name" %></span>
-			<span class="col-xs-3 col-xs-offset-4 action">
+				<%= f.text_field :name, autofocus: true, autocomplete: "name" %></span>
+			<span class="col-xs-3 col-xs-offset-3	action">
 				<%= f.submit "登録する",class:"btn btn-success" %>
 			</span>
 		</div>
 	</div>
 <% end %>
-<div class="row">
+<div class="row"><br><br>
 	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th class="col-xs-1">郵便番号</th>
-				<th class="col-xs-3">住所</th>
+				<th class="col-xs-2">住所</th>
 				<th class="col-xs-1">宛名</th>
-				<th class="col-xs-2"></th>
+				<th class="col-xs-1"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,8 +39,9 @@
 				<td><%=	shipping.postal_code %></td>
 				<td><%=	shipping.address %></td>
 				<td><%=	shipping.name %></td>
-				<td><%=	link_to "編集",edit_shipping_path(shipping),class:"btn btn-primary" %>  
-					<%=	link_to "削除",shipping_path(shipping),class:"btn btn-danger"	,method: :delete,"data-confirm" =>"本当に消しますか？" %><td
+				<td>
+					<%=	link_to "編集",edit_shipping_path(shipping),class:"btn btn-primary" %>  
+					<%=	link_to "削除",shipping_path(shipping),class:"btn btn-danger"	,method: :delete,"data-confirm" =>"本当に消しますか？" %></td>
 			</tr>
 			<% end %>
 		</tbody>
