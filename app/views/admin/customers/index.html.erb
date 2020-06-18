@@ -15,7 +15,7 @@
       <% @customers.each do |c|%>
         <tr>
           <td><%= c.id %></td>
-          <td><%= link_to c.family_name_kanji + c.first_name_kanji,admin_customer_path(c) %></td>
+          <td><%= link_to kanji_full_name(c),admin_customer_path(c) %></td>
           <td><%= c.email %></td>
           <td><%= c.is_status %></td>
         </tr>

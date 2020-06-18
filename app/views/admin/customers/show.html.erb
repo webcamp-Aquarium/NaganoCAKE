@@ -1,1 +1,43 @@
 <h2><%= kanji_full_name(@customer) %>さんの会員詳細 </h2>
+
+<div class="row">
+  <p class="col-xs-2">顧客ID</p>
+  <%= @customer.id %>
+  <span class="btn-info btn-xs">
+    <% if @customer.is_status == true %>
+    有効会員
+    <% else %>
+    退会済会員
+    <% end %>
+  </span>
+</div>
+<div class="row">
+  <p class="col-xs-2">氏名</p>
+  <%= kanji_full_name(@customer) %>
+</div>
+<div class="row">
+  <p class="col-xs-2">フリガナ</p>
+  <%= kana_full_name(@customer) %>
+</div>
+<div class="row">
+  <p class="col-xs-2">郵便番号</p>
+  <%= @customer.postal_code %>
+</div>
+<div class="row">
+  <p class="col-xs-2">住所</p>
+  <%= @customer.address %>
+</div>
+<div class="row">
+  <p class="col-xs-2">電話番号</p>
+  <%= @customer.phone %>
+</div>
+<div class="row">
+  <p class="col-xs-2">メールアドレス</p>
+  <%= @customer.email %>
+</div>
+
+<div>
+  <%= link_to "編集する",edit_admin_customer_path(@customer),class:"btn btn-primary" %>
+  <!-- 注文履歴ページまだないので、保留。 -->
+  <%= link_to "注文履歴一覧を見る","#",class:"btn btn-primary" %>
+</div>
