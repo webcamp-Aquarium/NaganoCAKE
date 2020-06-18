@@ -1,7 +1,7 @@
 class ShippingsController < ApplicationController
 	def new
+		@shippings = Shipping.where(customer_id: current_customer.id)
 		@shipping = Shipping.new
-		@shippings = Shipping.all
 	end
 	def create
 		@shipping = Shipping.new(shipping_params)
