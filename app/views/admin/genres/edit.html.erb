@@ -1,0 +1,12 @@
+   <div class="row">
+       <h1>ジャンル編集</h1>
+          <h3>ジャンル</h3>
+           <%= form_for @genre, url: admin_genre_path(@genre) do |f| %>
+           <%= f.text_field :name %>
+	    <div class="field">
+	    	<lavel><%= f.radio_button :is_status, "有効" %>有効</lavel>
+	    	<lavel><%= f.radio_button :is_status, "無効" %>無効</lavel>
+	    </div>
+	        <%= f.submit '変更を保存する',class: 'btn btn-primary' %>
+	        <% end %>
+	</div>	
