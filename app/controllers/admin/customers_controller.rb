@@ -1,20 +1,22 @@
 class Admin::CustomersController < ApplicationController
+  before_action :find_customer,only: [:show,:edit,:update]
+
   def index
     @customers = Customer.all
   end
 
   def show
-    @customer = Customer.find(params[:id])
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to admin_customers_path
+    if @customer.update(customer_params)
+      redirect_to admin_customers_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -29,5 +31,9 @@ class Admin::CustomersController < ApplicationController
                                               :address,
                                               :phone,
                                               :is_status)
+  end
+
+  def find_customer
+    @customer = Customer.find(params[:id])
   end
 end
