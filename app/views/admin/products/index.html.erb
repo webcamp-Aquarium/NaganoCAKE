@@ -1,0 +1,28 @@
+  <div class="row">
+  	<h2>商品一覧</h2>
+    <div class="productnew">
+    　　<%= link_to "+", new_admin_product_path, class: 'btn btn-default btn-lg' %>
+    </div>
+<table class="table">
+    <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+   　　<th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+  	 <% @products.each do |product| %>
+  	 <tr>
+  	 	<td><%= product.id %></td>
+  	 	<td><%= link_to product.name,admin_product_path(product.id) %></td>
+  	 	<td><%= product.price %></td>
+  	 	<td><%= product.genre.name %></td>
+  	 	<td><%= product.is_status %></td>
+  	 </tr>
+  	 <% end %>
+  </tbody>
+  <table>
+  </div> 	 	

@@ -1,5 +1,45 @@
-<p>こんにちは</p>
+<% if customer_signed_in? %>
+<div class="row">
+	<div class="col-xs-2">
+		<span class="center">ジャンル検索</span>
+			<% @genres.each do |genre| %>
+				<table>
+					<tbody>
+							<td>
+								<%= link_to genre.name, products_path %>
+							</td>
+					</tbody>
+				</table>
+			<% end %>
+	</div>
+</div>
+<div class="col-xs-10">
+	<div class= "row">
+	</div>
+</div>
 
+<% else %>
+<div class="row">
+	<div class="col-xs-2">
+		<span class="center">ジャンル検索</span>
+			<% @genres.each do |genre| %>
+				<table>
+					<tbody>
+							<td>
+								<%= link_to genre.name, products_path %>
+							</td>
+					</tbody>
+				</table>
+			<% end %>
+	</div>
+</div>
+	<div class="col-xs-10">
+		<div class= "row">
+			<p>ようこそ、NaganoCakeへ！<br>
+				このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要になります。</p>
+		</div>
+	</div>
 
-<!-- 一旦ログアウトするように設置しましたが、本来はここには置かない。 -->
-<%= link_to 'ログアウトする',destroy_customer_session_path,method: :delete %>
+<% end %>
