@@ -1,20 +1,24 @@
 <div class="row">
-     <div class="col-xs-9">   
-<h2>商品新規登録</h2>
-    <%= form_for(@product) do |f| %>
-         <%= f.file_field :image %>
+  <h2>商品新規登録</h2>
+     <div class="col-xs-4">   
+    <%= form_for @product, url:  admin_products_path do |f| %>
+         <%= f.attachment_field :image %>
+      </div>
+      <div class="col-xs-4">   
          　　<h4>商品名</h4>
                  <%= f.text_field :name %>
             <h4>商品説明</h4>
                   <%= f.text_area :description %>
             <h4>ジャンル</h4>
-                  <%= f.collection_select :genre, Genre.all, :id, :name, include_blank: true %>
+                  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
             <h4>税抜価格</h4>
                   <%= f.text_field :price %>円
             <h4>販売ステータス</h4>
-                  <%= f.select :is_status,{販売中: true, 売切れ: false} %>
+                  <%= f.select :is_status,{ 販売中:"販売中", 売切れ:"売切れ"} %>
+      </div>
+      <div class="col-xs-4">            
     <%= f.submit '新規登録',class: 'btn btn-primary' %>  
     <% end %> 
-    </div>
+      </div>
     </div>
                
