@@ -1,8 +1,17 @@
+
+<% if @cart_items.blank? %>
+
+<div class="center">
+  <h3><%= kana_full_name(current_customer) %>さんのカートにはまだ何も追加されていません。</h3>
+  <%= link_to '買い物を続ける',products_path,class:"btn btn-primary col-md-2 col-md-offset-5" %>
+</div>
+
+<% else %>
+
 <div class="row">
   <h2>ショッピングカート
   <%= link_to 'カートを空にする',cart_items_path,method: :delete, class:"btn btn-danger pull-right" %></h2>
 </div>
-
 
 <table class="table">
   <thead>
@@ -45,3 +54,5 @@
     </table>
   </span>
 </div>
+
+<% end %>

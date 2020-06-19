@@ -33,6 +33,11 @@ class CartItemsController < ApplicationController
 
   def reset
     @cart_items = CartItem.where(customer_id: current_customer.id)
+    if @cart_items.destroy_all
+      redirect_to products_path, notice: "カートを空にしました。"
+    else
+      render :index ,notice: "カートを空にできませんでした。"
+    end
   end
 
   private
