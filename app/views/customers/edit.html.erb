@@ -59,7 +59,7 @@
 
   <div class="actions row">
     <%= f.submit "編集内容を保存する",class:"btn btn-primary btn-default col-xs-3 col-xs-offset-2" %>
-    <%= link_to "退会する","/customers/#{@customer.id}/hide" ,method: :patch,class: "btn btn-danger col-xs-offset-2" %>
+    <%= link_to "退会する","/customers/#{@customer.id}/leave" ,class: "btn btn-danger col-xs-offset-2" %>
   </div>
 
 <% end %>
