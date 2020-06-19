@@ -10,22 +10,21 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top">
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
-          <span>Bookers</span>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <!--if文でサインインとアウト時の表示を変更-->
             <% if customer_signed_in? %>
-            <li><p>"ようこそ<%= kanji_full_name(current_customer) %>さん！</p></li>
+            <li><p>ようこそ<%= kanji_full_name(current_customer) %>さん！</p></li>
             <li><%= link_to ' マイページ', customer_path(current_customer) %></li>
             <li><%= link_to ' 商品一覧', products_path %></li>
             <li><%= link_to ' カート', cart_items_path %></li>
             <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete %></li>
-            <% elsif admin_signed_in? %>
+            <% elsif admin_administrator_signed_in? %>
             <li><%= link_to ' 商品一覧', admin_products_path %></li>
             <li><%= link_to ' 会員一覧', admin_customers_path %></li>
             <li><%= link_to ' 注文履歴一覧', admin_orders_path %></li>
@@ -41,8 +40,10 @@
 
       </div>
     </header>
+    <div class="body">
     <div class="container">
     <%= yield %>
-  </div>
+    </div>
+    </div>
   </body>
 </html>
