@@ -5,8 +5,12 @@ class Admin::ProductsController < ApplicationController
 	
 	def create
 	    @product = Product.new(product_params)
-	    @product.save
-	    redirect_to admin_products_path
+	   if   @product.save
+	   	    flash[:notice] = "商品情報が登録されました。"
+	        redirect_to admin_products_path
+	   else
+	        render 'new'
+	   end     
 	end
 
 	def index
@@ -21,8 +25,12 @@ class Admin::ProductsController < ApplicationController
 
 	def update
 		@product = Product.find(params[:id])
-	    @product.update(product_params)
-	    redirect_to admin_product_path(@product)
+	   if  @product.update(product_params)
+	   	   flash[:notice] = "商品情報が更新されました。"
+	       redirect_to admin_product_path
+	   else
+	       render 'edit'
+	   end       
 	end
 	
 	def show
