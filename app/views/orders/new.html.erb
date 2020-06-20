@@ -1,0 +1,43 @@
+
+<h2>注文情報入力</h2>
+
+<div class="row">
+
+  <%= form_for @order,url: orders_confirm_path,method: :get do |f| %>
+
+  <h3>支払方法</h3>
+    <label><%= f.radio_button :payment, "クレジットカード" %>クレジットカード</label></br>
+    <label><%= f.radio_button :payment, "銀行振込" %>銀行振込</label>
+
+  <h3>お届け先</h3>
+    <div>
+      <label><%= f.radio_button :select,1 %>
+      ご自身の住所</label></br>
+        <%= customer_joint_address(current_customer) %></br>
+    </div>
+
+    <div>
+      <label><%= f.radio_button :select,2 %>
+      登録済住所から選択</label></br>
+        <%= f.select :shipping, options_for_select(shipping_array(current_customer).map{|s| s.join(' ') } ) %>
+    </div>
+
+    <div>
+      <label><%= f.radio_button :select,3 %>
+      新しいお届け先</label></br>
+      <div>
+        <%= f.label :postal_code, '郵便番号(ハイフンなし)' %>
+        <%= f.text_field :postal_code %>
+      </div>
+      <div>
+        <%= f.label :address, '住所' %>
+        <%= f.text_field :address %>
+      </div>
+      <div>
+        <%= f.label :name, '宛名' %>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <%= f.submit '確認画面へ進む',class:"btn btn-primary" %>
+  <% end %>
+</div>

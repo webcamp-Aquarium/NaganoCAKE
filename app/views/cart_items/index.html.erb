@@ -26,7 +26,7 @@
   <tbody>
     <% @cart_items.each do |ci| %>
     <tr>
-      <td><%= attachment_image_tag(ci.product, :image_id, :fill, 30,20, fallback: "no_image.jpg") %><%= ci.product.name %></td>
+      <td><%= attachment_image_tag(ci.product, :image, :fill, 30,20, fallback: "no_image.jpg") %><%= ci.product.name %></td>
       <td><%= tax_in_price(ci.product) %></td>
       <td>
         <%= form_for ci,url: cart_item_path(ci) do |f| %>
@@ -53,6 +53,10 @@
       </tbody>
     </table>
   </span>
+</div>
+
+<div class="row center-block">
+  <%= link_to '情報入力に進む',new_order_path,class:"btn btn-success btn-lg col-md-4 col-md-offset-4" %>
 </div>
 
 <% end %>
