@@ -1,9 +1,10 @@
 <div class="row">
+	     <%= form_for @product, url: admin_product_path(@product) do |f| %>
       <div class="col-xs-4">
 	<h1>商品編集</h1>
 	     <%= form_for @product, url: admin_product_path(@product) do |f| %>
 	              <%= f.attachment_field :image %>
-                 
+
 	     　　<h4>商品名</h4>
              　　　<%= f.text_field :name %>
              <h4>商品説明</h4>
@@ -15,6 +16,6 @@
              <h4>販売ステータス</h4>
              　　　 <%= f.select :is_status,{ 販売中:"販売中", 売切れ:"売切れ"} %>     
        　<%= f.submit '変更を保存',class: 'btn btn-primary' %> 
-         <% end %>
       </div>   
+         <% end %>
 </div>             
