@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
     unless @product.is_status
       redirect_to products_path
     end
-    @cart_item = CartItem.new(customer_id: current_customer.id,
-                              product_id: params[:id])
+    @cart_item = CartItem.new
 	end
 end
