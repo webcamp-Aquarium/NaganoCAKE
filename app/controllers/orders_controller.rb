@@ -1,13 +1,19 @@
 class OrdersController < ApplicationController
 	include CustomersHelper
+	include CartItemsHelper
+	include ProductsHelper
+
 	def new
 		@order = Order.new
 	end
 
 	def confirm
+		@cart_items = CartItem.where(customer_id: current_customer.id)
+
 		@order = Order.new
-		@order.customer_id = current_customer.id
 		@order.payment = params[:order][:payment]
+		@order.total_fee = total_fee(@cart_items)
+		@order.customer_id = current_customer.id
 		case params[:order][:select]
 			when "1"
 				@order.postal_code = current_customer.postal_code
@@ -23,10 +29,27 @@ class OrdersController < ApplicationController
 				@order.address = params[:order][:address]
 				@order.name = params[:order][:name]
 		end
-
 	end
 
 	def create
+		@cart_items = CartItem.where(customer_id: current_customer.id)
+
+		@order = Order.new(order_params)
+		@order.total_fee = total_fee(@cart_items)
+
+		if @order.save
+			@cart_items.each do |ci|
+				@order_detail = OrderDetail.new(order_id: @order.id,
+																	product_id: ci.product.id,
+																		price: ci.product.price,
+																					number: ci.number)
+				@order_detail.save
+			end
+			@cart_items.destroy_all
+			redirect_to orders_complete_path
+		else
+			redirect_back(fallback_location: products_path)
+		end
 	end
 
 	def complete
@@ -39,14 +62,8 @@ class OrdersController < ApplicationController
 	end
 
 	private
-
 	def order_params
-		params.require(:order).permit(:postal_code,:address,:name,:payment,:status,:total_fee,:delivery_fee,:select,:shipping).merge(customer_id: current_customer.id)
+		params.require(:order).permit(:postal_code, :address, :name, :payment).merge(customer_id: current_customer.id)
 	end
-
-	# def shipping_params
-	# 	params.require(:shipping).permit(:postal_code,:address,:name)
-	# end
-
 end
 

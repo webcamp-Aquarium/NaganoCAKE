@@ -34,7 +34,7 @@
           <%= f.submit '変更', class:"btn btn-primary" %>
         <% end %>
       </td>
-      <td><%= subtotal_fee(resource) %></td>
+      <td><%= subtotal_fee(ci) %></td>
       <td><%= link_to '削除する',cart_item_path(ci), method: :delete, class:"btn btn-danger" %></td>
     </tr>
     <% end %>

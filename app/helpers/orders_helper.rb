@@ -1,6 +1,6 @@
 module OrdersHelper
   def customer_joint_address(resource)
-    "#{resource.postal_code}\s#{resource.address}\s#{kanji_full_name(resource)}"
+    [resource.postal_code,resource.address,kanji_full_name(resource)].join(' ')
   end
 
   def shipping_address(resource)
