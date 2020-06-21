@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 		@order.payment = params[:order][:payment]
 		@order.total_fee = total_fee(@cart_items)
 		@order.customer_id = current_customer.id
+		@order.select = params[:order][:select]
 		case params[:order][:select]
 			when "1"
 				@order.postal_code = current_customer.postal_code
@@ -29,6 +30,10 @@ class OrdersController < ApplicationController
 				@order.address = params[:order][:address]
 				@order.name = params[:order][:name]
 		end
+
+		if @order.invalid?
+			render :new
+		end
 	end
 
 	def create
@@ -36,16 +41,20 @@ class OrdersController < ApplicationController
 
 		@order = Order.new(order_params)
 		@order.total_fee = total_fee(@cart_items)
-
 		if @order.save
 			@cart_items.each do |ci|
-				@order_detail = OrderDetail.new(order_id: @order.id,
-																	product_id: ci.product.id,
-																		price: ci.product.price,
-																					number: ci.number)
-				@order_detail.save
+				OrderDetail.create(order_id: @order.id,
+													product_id: ci.product.id,
+													price: ci.product.price,
+													number: ci.number)
 			end
+				Shipping.create(customer_id: current_customer.id,
+											postal_code: @order.postal_code,
+											address: @order.address,
+											name: @order.name) if @order.select == "3"
+
 			@cart_items.destroy_all
+
 			redirect_to orders_complete_path
 		else
 			redirect_back(fallback_location: products_path)
@@ -63,7 +72,7 @@ class OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.require(:order).permit(:postal_code, :address, :name, :payment).merge(customer_id: current_customer.id)
+		params.require(:order).permit(:postal_code, :address, :name, :payment, :select).merge(customer_id: current_customer.id)
 	end
 end
 
