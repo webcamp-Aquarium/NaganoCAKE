@@ -33,10 +33,10 @@
         <tr>
           <td><%= attachment_image_tag(ci.product, :image, :fill, 60,45, fallback: "no_image.jpg") %>  <%= ci.product.name %></td>
           <td><%= tax_in_price(ci.product) %></td>
-          <td class="center">
+          <td class="center form-group form-inline">
             <%= form_for ci,url: cart_item_path(ci) do |f| %>
-              <%= f.number_field :number,class: "",min: 1,max: 9 %>
-              <%= f.submit '変更', class:"btn btn-primary" %>
+              <%= f.number_field :number,class:"form-control",min: 1,max: 9 %>
+              <%= f.submit '変更', class:"btn btn-primary btn-xs form-control" %>
             <% end %>
           </td>
           <td><%= subtotal_fee(ci) %></td>
