@@ -3,47 +3,51 @@
   <h2 class="center">退会済みのユーザーです。</h2>
 
 <% else %>
-  <h2>マイページ</h2>
+  <h3>マイページ</h3>
 
-  <h3>登録情報
-    <%= link_to '編集する',edit_customer_path, class:"btn btn-primary" %>
+  <h4><b>登録情報 </b>
+    <%= link_to '編集する',edit_customer_path, class:"btn btn-primary btn-sm" %>
     <!-- リンク先のビューページまだ無いので。 -->
-    <%= link_to 'パスワードを変更する', '#', class:"btn btn-primary" %>
-  </h3>
+    <%= link_to 'パスワードを変更する', '#', class:"btn btn-primary btn-sm" %>
+  </h4>
 
-  <table class="table table-bordered ">
+<div class="row">
+  <div class="col-md-9">
+  <table class="table table-bordered">
     <tr>
-      <td>名前</td>
-      <td><%= @customer.family_name_kanji + " " + @customer.first_name_kanji %></td>
+      <th class="active ">名前</th>
+      <td><%= kanji_full_name(@customer) %></td>
     </tr>
     <tr>
-      <td>カナ</td>
-      <td><%= @customer.family_name_kana + " " + @customer.first_name_kana %></td>
+      <th class="active">カナ</th>
+      <td><%= kana_full_name(@customer) %></td>
     </tr>
     <tr>
-      <td>郵便番号</td>
+      <th class="active">郵便番号</th>
       <td><%= @customer.postal_code %></td>
     </tr>
     <tr>
-      <td>住所</td>
+      <th class="active">住所</th>
       <td><%= @customer.address %></td>
     </tr>
     <tr>
-      <td>電話番号</td>
+      <th class="active">電話番号</th>
       <td><%= @customer.phone %></td>
     </tr>
     <tr>
-      <td>メールアドレス</td>
+      <th class="active">メールアドレス</th>
       <td><%= @customer.email %></td>
     </tr>
   </table>
+  </div>
+</div>
 
-  <h3>配送先
-    <%= link_to '一覧を見る',new_shipping_path, class:"btn btn-primary" %>
-  </h3>
-  <!-- リンク先まだ無いので仮置き -->
-  <h3>注文履歴
-    <%= link_to '一覧を見る',orders_path,class:"btn btn-primary" %>
-  </h3>
+  <h4><b>配送先</b>
+    <%= link_to '一覧を見る',new_shipping_path, class:"btn btn-primary btn-sm" %>
+  </h4>
+
+  <h4><b>注文履歴</b>
+    <%= link_to '一覧を見る',orders_path,class:"btn btn-primary btn-sm" %>
+  </h4>
 
 <% end %>
