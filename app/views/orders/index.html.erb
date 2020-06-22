@@ -1,4 +1,4 @@
-<h3>注文履歴一覧</h3>
+<h2>注文履歴一覧</h2>
 
 <table class="table table-bordered">
 	<thead>
@@ -15,14 +15,16 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td><%= order.created_at %></td>
+			<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 			<td><%= order.postal_code %><br>
 				<%= order.address %><br>
 				<%= order.name %></td>
-			<td><%= find_product_name(order) %></td>
-			<td><%= order.total_fee %></td>
-			<td><%= order.is_status %></td>
-			<td><%=link_to "表示する", orders_path(order), class: "btn btn-primary" %></td>
+			<td><% order.order_details.each do |order_detail| %>
+			<%= order_detail.product.name %><br>
+			<% end %></td>
+			<td><%= (order.total_fee + order.delivery_fee).to_s(:delimited) %></td>
+			<td><%= order.status %></td>
+			<td><%=link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
 		</tr>
 		<% end %>
 	</tbody>

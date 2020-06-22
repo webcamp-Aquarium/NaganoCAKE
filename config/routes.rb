@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   delete '/cart_items' => "cart_items#reset"
   resources :products,only: [:index,:show]
   resources :shippings,only: [:new,:create,:edit,:update,:destroy]
-  resources :orders,only: [:new,:create,:index,:show]
-  get '/orders/confirm' => "orders#confirm"
+  post '/orders/confirm' => "orders#confirm"
   get '/orders/complete' => "orders#complete"
+  post '/orders/complete' => "orders#create"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :orders,only: [:new,:create,:index,:show]
   root to: 'home#top'
   namespace :admin do
   	get '/' => "home#top"
