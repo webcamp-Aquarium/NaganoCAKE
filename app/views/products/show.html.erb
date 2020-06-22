@@ -1,21 +1,6 @@
 <div class="row">
 
-<div class="col-xs-2">
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="active">ジャンル検索</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @genres.each do |genre| %>
-      <tr>
-        <td><%= genre.name %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<%= render 'genre',genres: @genres %>
 
 <div class="col-xs-10">
 
