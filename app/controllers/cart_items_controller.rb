@@ -8,6 +8,7 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = current_customer.cart_items.new(product_id: params[:product_id],
                                                 number: params[:cart_item][:number])
+    
     if @cart_item.save
       redirect_to cart_items_path
     else

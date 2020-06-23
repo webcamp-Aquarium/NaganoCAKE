@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
 		@order.total_fee = total_fee(@cart_items)
 		@order.customer_id = current_customer.id
 		@order.select = params[:order][:select]
+
 		case params[:order][:select]
 			when "1"
 				@order.postal_code = current_customer.postal_code
