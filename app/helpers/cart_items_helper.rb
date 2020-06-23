@@ -10,4 +10,12 @@ module CartItemsHelper
   def subtotal_fee(resource) #一種類のカートアイテムを入れる
     (tax_in_price(resource.product) * resource.number)
   end
+
+  def total_number(resources)
+    number = 0
+    resources.each do |r|
+      number += r.number
+    end
+    return number
+  end
 end

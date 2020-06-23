@@ -5,6 +5,6 @@ class Order < ApplicationRecord
   enum status: {入金待ち: 1,入金確認: 2,製作中: 3,発送準備中: 4,発送済み: 5}
 
   validates :postal_code, presence: true, length: { is: 7 }
-  validates :address,:name,:payment,:total_fee,:select, presence: true
+  validates :address,:name,:payment,:total_fee, presence: true
   attr_accessor :select,:shipping
 end
