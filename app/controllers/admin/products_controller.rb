@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+	before_action :authenticate_admin_administrator!
+
 	def new
 		@product = Product.new
 	end

@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin_administrator!
   before_action :find_customer,only: [:show,:edit,:update]
 
   def index
