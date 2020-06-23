@@ -65,9 +65,17 @@ class OrdersController < ApplicationController
 	end
 
 	def index
+		@orders = Order.where(customer_id: current_customer.id)
+		@order = Order.new
 	end
 
 	def show
+		@order = Order.find(params[:id])
+	end
+
+	private
+	def order_params
+		params.require(:order).permit(:postal_code, :address, :name, :payment, :select).merge(customer_id: current_customer.id)
 	end
 
 	private
