@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   patch '/customers/:id/hide' => "customers#hide"
   resources :cart_items,only: [:index,:create,:destroy,:update]
   delete '/cart_items' => "cart_items#reset"
+  get '/products/:genre_id/search' => "products#search"
   resources :products,only: [:index,:show]
   resources :shippings,only: [:new,:create,:edit,:update,:destroy]
   post '/orders/confirm' => "orders#confirm"
