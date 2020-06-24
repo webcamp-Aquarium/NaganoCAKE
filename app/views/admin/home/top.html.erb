@@ -1,5 +1,8 @@
-<p>管理者さん、こんにちは</p>
+<h3>管理者画面TOP</h3>
 
+<h2>本日の注文件数
+<%= link_to admin_orders_path do %>
+<%= @orders.count %><% end %>件</h2>
 
 <!-- 一旦ログアウトするように設置しましたが、本来はここには置かない。 -->
 <%= link_to 'ログアウト',destroy_admin_administrator_session_path,method: :delete %>
