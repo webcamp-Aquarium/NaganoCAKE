@@ -1,0 +1,45 @@
+<% if @customers %>
+
+<table class="table">
+  <caption>会員検索結果<small>(<%= @customers.count %>件)</small></caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>会員名</th>
+      <th>フリガナ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |c| %>
+        <tr>
+          <td><%= c.id %></td>
+          <td><%= link_to kanji_full_name(c),admin_customer_path(c) %></td>
+          <td><%= kana_full_name(c) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% elsif @products %>
+
+<table class="table">
+  <caption>商品検索結果<small>(<%= @products.count %>件)</small></caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>商品名</th>
+      <th>価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |p| %>
+        <tr>
+          <td><%= p.id %></td>
+          <td><%= link_to p.name,admin_product_path(p) %></td>
+          <td><%= p.price %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

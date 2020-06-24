@@ -17,7 +17,7 @@ class Admin::UnlocksController < Devise::UnlocksController
   #   super
   # end
 
-  # protected
+  # protectedww
 
   # The path used after sending unlock password instructions
   # def after_sending_unlock_instructions_path_for(resource)
