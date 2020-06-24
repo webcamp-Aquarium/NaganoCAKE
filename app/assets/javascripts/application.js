@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).on('turbolinks:load',function () {
+$(document).on(function () {
   $("#theTarget").skippr({
       // スライドショーの変化 ("fade" or "slide")
       transition : 'slide',

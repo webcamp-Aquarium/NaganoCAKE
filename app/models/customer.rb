@@ -8,5 +8,7 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+  validates :family_name_kanji,:first_name_kanji,:family_name_kana,:first_name_kana,:address,:phone,presense: true
+  validates :postal_code,presence: true, length: { is: 7 }
   enum is_status: {有効: true, 退会済: false}
 end
