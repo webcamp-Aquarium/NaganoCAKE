@@ -13,6 +13,12 @@
     <header class="navbar">
         <nav class="navbar navbar-fixed-top navbar-inverse">
             <div class="container">
+
+              <ul class="nav navbar-nav navbar-left">
+                  <%= link_to root_path do %>
+                  <%= image_tag 'logo.png',:size => '150x50'  %>
+                  <% end %>
+              </ul>
               <ul class="nav navbar-nav navbar-right">
                 <!--if文でサインインとアウト時の表示を変更-->
                 <% if customer_signed_in? %>

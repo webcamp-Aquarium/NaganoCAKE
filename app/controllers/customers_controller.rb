@@ -20,7 +20,8 @@ class CustomersController < ApplicationController
   end
 
   def hide
-    if @customer.update(is_status: false)
+    if @customer.update(is_status: "退会済")
+      sign_out current_customer
       redirect_to root_path, notice: "退会処理が完了しました。ご利用ありがとうございました。"
     else
       render :edit
@@ -37,8 +38,7 @@ class CustomersController < ApplicationController
                                               :email,
                                               :postal_code,
                                               :address,
-                                              :phone,
-                                              :is_status)
+                                              :phone)
   end
 
   def correct_customer

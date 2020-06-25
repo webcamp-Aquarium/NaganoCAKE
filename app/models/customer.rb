@@ -12,6 +12,14 @@ class Customer < ApplicationRecord
   validates :postal_code,presence: true, length: { is: 7 }
   enum is_status: {有効: true, 退会済: false}
 
+  def active_for_authentication?
+    super && (self.is_status == "有効")
+  end
+
+  def inactive_message
+    self.is_status == "有効" ? super : :customer_status_is_not_valid
+  end
+
   def self.search(search)
     return Customer.all unless search
     Customer.find_by_sql(["select * from Customers where family_name_kanji || first_name_kanji LIKE ?", "%#{search}%"])
