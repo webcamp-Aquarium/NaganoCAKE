@@ -8,8 +8,8 @@ class Admin::ProductsController < ApplicationController
 	def create
 	    @product = Product.new(product_params)
 	   if   @product.save
-	   	    flash[:notice] = "商品情報が登録されました。"
-	        redirect_to admin_products_path
+	   	    flash[:success] = "商品情報が登録されました。"
+	        redirect_to admin_product_path(@product)
 	   else
 	        render 'new'
 	   end     
@@ -28,7 +28,7 @@ class Admin::ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 	   if  @product.update(product_params)
-	   	   flash[:notice] = "商品情報が更新されました。"
+	   	   flash[:success] = "商品情報が更新されました。"
 	       redirect_to admin_product_path
 	   else
 	       render 'edit'
