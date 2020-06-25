@@ -12,12 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require refile
 //= require_tree .
 
-$(document).on('turbolinks:load',function () {
+$(document).on(function () {
   $("#theTarget").skippr({
       // スライドショーの変化 ("fade" or "slide")
       transition : 'slide',

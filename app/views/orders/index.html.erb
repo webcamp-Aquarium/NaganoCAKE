@@ -1,10 +1,10 @@
 <h2>注文履歴一覧</h2>
 
-<table class="table table-bordered">
+<table class="table table-bordered row">
 	<thead>
-		<tr>
+		<tr class="active">
 			<th>注文日</th>
-			<th>配送先</th>
+			<th class="col-md-5">配送先</th>
 			<th>注文商品</th>
 			<th>支払金額</th>
 			<th>ステータス</th>
@@ -24,7 +24,7 @@
 			<% end %></td>
 			<td><%= (order.total_fee + order.delivery_fee).to_s(:delimited) %></td>
 			<td><%= order.status %></td>
-			<td><%=link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+			<td><%=link_to "表示する", order_path(order), class: "btn btn-primary center-block" %></td>
 		</tr>
 		<% end %>
 	</tbody>

@@ -1,6 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
 	before_action :authenticate_admin_administrator!
-
+	layout 'admin'
 	def update
 		@order_detail = OrderDetail.find(params[:id])
 		@order = @order_detail.order

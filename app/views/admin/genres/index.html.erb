@@ -1,6 +1,6 @@
-  <% if flash[:notice] %>
-  <p class="message"><%= flash[:notice] %></p>
-  <% end %>
+　　　<p class="notice">
+       <%= flash[:success] %>
+    </p>
    <div class="row">
    <h2>ジャンル一覧・追加</h2>
 	    <%= form_for @genre, :url => {:action => :create} do |f| %>
