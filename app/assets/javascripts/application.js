@@ -17,7 +17,7 @@
 //= require refile
 //= require_tree .
 
-$(document).on(function () {
+$(document).ready(function () {
   $("#theTarget").skippr({
       // スライドショーの変化 ("fade" or "slide")
       transition : 'slide',
