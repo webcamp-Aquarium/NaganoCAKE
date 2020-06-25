@@ -11,10 +11,10 @@ class Customer < ApplicationRecord
   enum is_status: {有効: true, 退会済: false}
 
   def active_for_authentication?
-    super && (self.is_status == true)
+    super && (self.is_status == "有効")
   end
 
   def inactive_message
-    self.is_status == true ? super : :customer_status_is_not_valid
+    self.is_status == "有効" ? super : :customer_status_is_not_valid
   end
 end
