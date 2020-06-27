@@ -65,3 +65,5 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem "jquery-rails"
 gem 'jp_prefecture'
 gem 'kaminari'
+gem 'rspec-rails'
+gem "factory_bot_rails"

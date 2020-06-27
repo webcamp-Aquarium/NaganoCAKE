@@ -17,6 +17,13 @@ module NaganoCAKE
     # the framework and any gems in your application.
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
+    config.generators do |g|
+      g.test_framework :rspec,
+        view_specs: false,
+        helper_specs: false,
+        controller_specs: false,
+        routing_specs: false
+    end
   end
 end
 
