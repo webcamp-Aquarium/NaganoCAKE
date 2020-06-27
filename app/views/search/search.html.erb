@@ -1,11 +1,11 @@
 <% if @customers %>
 
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-2">
       <table class="table">
         <caption>会員検索結果<small>(<%= @customers.count %>件)</small></caption>
         <thead>
-          <tr>
+          <tr class="active">
             <th>ID</th>
             <th>会員名</th>
             <th>フリガナ</th>
@@ -27,11 +27,11 @@
 <% elsif @products %>
 
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-2">
       <table class="table">
         <caption>商品検索結果<small>(<%= @products.count %>件)</small></caption>
         <thead>
-          <tr>
+          <tr class="active">
             <th>ID</th>
             <th>商品名</th>
             <th>価格</th>

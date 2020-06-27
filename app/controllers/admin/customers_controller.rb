@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
   before_action :find_customer,only: [:show,:edit,:update]
   layout 'admin'
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page])
   end
 
   def show
