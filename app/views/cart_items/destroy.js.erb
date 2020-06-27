@@ -1,0 +1,2 @@
+$("#cart-customer<%= current_customer.id %>").html("<%= j(render 'cart_item',cart_items: @cart_items) %>");
+$("#cart-fee").html("<%= total_fee(@cart_items).to_s(:delimited) %>");

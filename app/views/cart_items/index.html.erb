@@ -16,22 +16,10 @@
       <%= link_to 'カートを空にする',cart_items_path,method: :delete, class:"btn btn-danger pull-right" %></h3>
     </div>
 
-    <table class="table table-bordered top-margin">
-      <thead>
-        <tr class="active">
-          <div class="row">
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th class="col-md-2">数量</th>
-            <th>小計</th>
-            <th class="col-md-1"></th>
+
+          <div id="cart-customer<%= current_customer.id %>">
+            <%= render 'cart_items/cart_item',cart_items: @cart_items %>
           </div>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @cart_items %>
-      </tbody>
-    </table>
 
     <div class="row">
       <%= link_to '買い物を続ける',root_path,class:"btn btn-primary col-md-2" %>
@@ -41,7 +29,7 @@
             <tr>
               <div class="row">
                 <th class="active col-md-6 total-fee">合計金額</th>
-                <td class="total-fee"><%= total_fee(@cart_items) %></td>
+                <td class="total-fee" id="cart-fee"><%= total_fee(@cart_items).to_s(:delimited) %></td>
               </div>
             </tr>
           </tbody>

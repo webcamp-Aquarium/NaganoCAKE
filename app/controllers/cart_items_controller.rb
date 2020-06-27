@@ -1,8 +1,8 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :cart_items_all,only: [:index,:destroy,:update,:reset]
 
   def index
-    @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
   def create
@@ -20,19 +20,18 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     if @cart_item.destroy
-      redirect_back(fallback_location: root_path)
+      # redirect_back(fallback_location: root_path)
     end
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-      redirect_back(fallback_location: root_path)
+      # redirect_back(fallback_location: root_path)
     end
   end
 
   def reset
-    @cart_items = CartItem.where(customer_id: current_customer.id)
     if @cart_items.destroy_all
       redirect_to products_path, notice: "カートを空にしました。"
     else
@@ -44,5 +43,9 @@ class CartItemsController < ApplicationController
 
   def cart_item_params
     params.require(:cart_item).permit(:customer_id,:product_id,:number)
+  end
+
+  def cart_items_all
+    @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 end
