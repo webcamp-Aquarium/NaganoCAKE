@@ -2,7 +2,7 @@ class Admin::OrdersController < ApplicationController
 	before_action :authenticate_admin_administrator!
 	layout 'admin'
 	def index
-		@orders = Order.all
+		@orders = Order.all.order(created_at: :desc)
 	end
 
 	def show
