@@ -1,52 +1,57 @@
-<h2>配送先登録/一覧</h2>
-<%=	form_for	@shipping, url: { action: "create"}	do |f| %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+		<h2>配送先登録/一覧</h2>
+		<%=	form_for	@shipping, url: { action: "create"}	do |f| %>
 
-<div class="row col-xs-11 col-xs-offset-1 shipping-margin">
+		<div class="row col-xs-11 col-xs-offset-1 shipping-margin">
 
-	<div class="row field form-group form-inline">
-			<span class="col-xs-3">郵便番号(ハイフンなし)</span>
-			<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",class:"form-control" %>
-	</div>
-	<div class="row field form-group form-inline">
-			<span class="col-xs-3">住所</span>
-			<%= f.text_field :address,size: 50,autofocus: true, autocomplete: "address",class:"form-control" %>
-	</div>
-	<div class="row field form-group form-inline">
-			<span class="col-xs-3">宛名</span>
-			<%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control col-xs-2" %>
-			<span class=" action">
-				<%= f.submit "登録する",class:"btn btn-success col-xs-2 col-xs-offset-2" %>
-			</span>
-	</div>
+			<div class="row field form-group form-inline">
+					<span class="col-xs-3">郵便番号(ハイフンなし)</span>
+					<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",class:"form-control" %>
+			</div>
+			<div class="row field form-group form-inline">
+					<span class="col-xs-3">住所</span>
+					<%= f.text_field :address,size: 50,autofocus: true, autocomplete: "address",class:"form-control" %>
+			</div>
+			<div class="row field form-group form-inline">
+					<span class="col-xs-3">宛名</span>
+					<%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control col-xs-2" %>
+					<span class=" action">
+						<%= f.submit "登録する",class:"btn btn-success col-xs-2 col-xs-offset-2" %>
+					</span>
+			</div>
 
-</div>
+		</div>
 
-<% end %>
+		<% end %>
 
-<div class="row shipping-margin">
-	<div class="col-md-10">
-	<table class="table table-bordered">
-		<thead>
-			<tr class="active">
-				<th>郵便番号</th>
-				<th>住所</th>
-				<th>宛名</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @shippings.each do |shipping| %>
-			<tr>
-				<td><%=	shipping.postal_code %></td>
-				<td><%=	shipping.address %></td>
-				<td><%=	shipping.name %></td>
-				<td class="text-center">
-					<%=	link_to "編集",edit_shipping_path(shipping),class:"btn btn-primary" %>
-					<%=	link_to "削除",shipping_path(shipping),class:"btn btn-danger"	,method: :delete,"data-confirm" =>"本当に消しますか？" %>
-					</div></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+		<div class="row shipping-margin">
+			<div class="col-md-12">
+			<table class="table table-bordered">
+				<thead>
+					<tr class="active">
+						<th>郵便番号</th>
+						<th>住所</th>
+						<th>宛名</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @shippings.each do |shipping| %>
+					<tr>
+						<td><%=	shipping.postal_code %></td>
+						<td><%=	shipping.address %></td>
+						<td><%=	shipping.name %></td>
+						<td class="text-center">
+							<%=	link_to "編集",edit_shipping_path(shipping),class:"btn btn-primary" %>
+							<%=	link_to "削除",shipping_path(shipping),class:"btn btn-danger"	,method: :delete,"data-confirm" =>"本当に消しますか？" %>
+							</div></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			</div>
+		</div>
+
 	</div>
 </div>
