@@ -1,8 +1,6 @@
 class SearchController < ApplicationController
   def search
-    if !Product.search(params[:search]).blank?
-      # 商品で検索がヒットした場合
-      @products = Product.search(params[:search])
-    end
+    @genres = Genre.where(is_status: true)
+    @products = Product.search(params[:search]).where(is_status: true,genre_id: @genres)
   end
 end
