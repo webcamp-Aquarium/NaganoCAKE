@@ -15,4 +15,64 @@
 
   <%= render 'products/products',products: @products %>
 
-<div class="pull-right"><%= link_to 'もっと見る>',products_path %></div>
+
+
+<div class="row store-info flex">
+  <div class="store-table">
+    <table class="table">
+      <caption>本店基本情報</caption>
+      <tbody>
+        <tr>
+          <th>店名</th>
+          <td>NaganoCAKE 本店</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>長野県上高井郡小布施町大字小布施中町784</td>
+        </tr>
+        <tr>
+          <th>交通手段</th>
+          <td>長野電鉄　小布施駅より徒歩６分<br>小布施駅から452m</td>
+        </tr>
+        <tr>
+          <th>TEL</th>
+          <td>00-1234-5678</td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td>10:00~18:00</td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td>水曜日、年末年始12月30日、31日、1月1日</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <!-- こっからmap表示用のコード -->
+    <div id="map" style="height:250px; width:400px;"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async ></script>
+
+    <script>
+      let map;
+      function initMap() {
+        geocoder = new google.maps.Geocoder()
+
+        //マップを作成
+        map = new google.maps.Map(document.getElementById('map'),{
+          center: { lat: 36.696316, lng: 138.316368 },
+          zoom: 15
+        });
+
+        //マーカーを立てる場所の緯度経度を指定
+        marker = new google.maps.Marker({
+          position: { lat: 36.696316, lng: 138.316368 },
+          map: map
+        });
+      }
+    </script>
+  </div>
+</div>
