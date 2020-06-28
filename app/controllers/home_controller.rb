@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	def top
 		@genres = Genre.where(is_status: true)
-    @products = Product.all.sample(3)
+    @products = Product.where(is_status: true,genre_id: @genres).sample(3)
 	end
 end

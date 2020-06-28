@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   	resources :order_details,only: [:update]
   end
 
+  get 'admin/search' => "admin/search#search"
   get '/search' => "search#search"
 
 end

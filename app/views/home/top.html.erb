@@ -10,11 +10,15 @@
 
 	</div>
 <% end %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
 
-<h2>今週のおすすめ</h2>
+      <%= render 'products/genre',genres: @genres %>
 
-  <%= render 'products/products',products: @products %>
-
+      <div class="col-xs-10">
+        <h2>今週のおすすめ</h2>
+        <%= render 'products/products',products: @products %>
+      </div>
 
 
 <div class="row store-info flex">
@@ -76,3 +80,6 @@
     </script>
   </div>
 </div>
+
+    </div>
+  </div>

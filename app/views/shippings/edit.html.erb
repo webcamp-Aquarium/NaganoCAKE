@@ -1,23 +1,27 @@
-<h3>配送先編集</h3>
-<%=	form_for	@shipping, url: { action: "update"}	do |f| %>
-<div class="shipping-margin col-xs-11">
-	<div class="row field form-group form-inline">
-		<span class="col-xs-3">郵便番号(ハイフンなし)</span>
-		<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",class:"form-control" %>
-	</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+		<h3>配送先編集</h3>
+		<%=	form_for	@shipping, url: { action: "update"}	do |f| %>
+		<div class="shipping-margin col-xs-11">
+			<div class="row field form-group form-inline">
+				<span class="col-xs-3">郵便番号(ハイフンなし)</span>
+				<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",class:"form-control" %>
+			</div>
 
-	<div class="row field form-group form-inline">
-		<span class="col-xs-3">住所</span>
-		<%= f.text_field :address, autofocus: true, autocomplete: "address",class:"form-control",size: 50 %>
-	</div>
+			<div class="row field form-group form-inline">
+				<span class="col-xs-3">住所</span>
+				<%= f.text_field :address, autofocus: true, autocomplete: "address",class:"form-control",size: 50 %>
+			</div>
 
-	<div class="row field form-group form-inline">
-		<span class="col-xs-3">宛名</span>
-		<%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
-	</div>
+			<div class="row field form-group form-inline">
+				<span class="col-xs-3">宛名</span>
+				<%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
+			</div>
 
-	<div class="row">
-		<%= f.submit "編集する",class:"btn btn-primary col-xs-2 col-xs-offset-7" %>
+			<div class="row">
+				<%= f.submit "編集する",class:"btn btn-primary col-xs-2 col-xs-offset-7" %>
+			</div>
+		</div>
+		<% end %>
 	</div>
 </div>
-<% end %>
