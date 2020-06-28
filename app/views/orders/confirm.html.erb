@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
 <h2>注文情報確認</h2>
 
 <div class="row">
@@ -44,12 +47,14 @@
 </div>
 
 <div class="row">
-  <h3>支払方法
-    <small><%= @order.payment %></small>
-  </h3>
-  <h3>お届け先
-    <small><%= "#{@order.postal_code}\t#{@order.address}\t#{@order.name}" %></small>
-  </h3>
+  <h3 class="col-md-2">支払方法</h3>
+  <p class="col-md-10 payment-info"><%= @order.payment %></p>
+</div>
+<div class="row">
+  <h3 class="col-md-2">お届け先</h3>
+  <p class="col-md-10"><%= @order.postal_code %><br>
+     <%= @order.address %><br>
+     <%= @order.name %></p>
 </div>
 
 <div class="row">
@@ -65,3 +70,7 @@
 </div>
 
 <% end %>
+
+
+  </div>
+</div>

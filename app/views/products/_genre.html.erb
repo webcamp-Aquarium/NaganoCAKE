@@ -8,7 +8,7 @@
     <tbody>
       <% genres.each do |genre| %>
       <tr>
-        <td><%= link_to genre.name,"/products/#{genre.id}/search" %></td>
+        <td><%= link_to genre.name,"/products/#{genre.id}/search",class:"genre-search" %></td>
       </tr>
       <% end %>
     </tbody>

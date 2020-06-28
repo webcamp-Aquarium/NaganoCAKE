@@ -1,26 +1,28 @@
-<h2>会員一覧</h2>
-
 <div class="row">
-  <div class="col-xs-9">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @customers.each do |c|%>
+  <div class="col-md-8 col-md-offset-2">
+    <h2>会員一覧</h2>
+
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= c.id %></td>
-          <td><%= link_to kanji_full_name(c),admin_customer_path(c) %></td>
-          <td><%= c.email %></td>
-          <td><%= c.is_status %></td>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @customers.each do |c|%>
+          <tr>
+            <td><%= c.id %></td>
+            <td><%= link_to kanji_full_name(c),admin_customer_path(c) %></td>
+            <td><%= c.email %></td>
+            <td><%= c.is_status %></td>
+          </tr>
+        <% end %>
+        <%= paginate @customers %>
+      </tbody>
+    </table>
+
   </div>
 </div>

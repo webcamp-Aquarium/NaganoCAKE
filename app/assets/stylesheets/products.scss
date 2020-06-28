@@ -1,11 +1,11 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.productnew{
-	position: absolute;
-	top: 70px;
-	right: 300px;
-}
+// .productnew{
+// 	position: absolute;
+// 	top: 70px;
+// 	right: 300px;
+// }
 .productshow{
 	position: absoulute;
 	bottom: 30px;
@@ -13,4 +13,29 @@
 }
 .notice{
 	color: green;
+}
+
+.product-info a{
+  color:black;
+}
+
+.product-info{
+  padding:13px;
+}
+
+.product-info img{
+  width:100%;
+}
+
+.product-info:hover{
+  background-color:#EEE;
+}
+
+.product-info a:hover{
+  text-decoration: none;
+  color:#808080;
+}
+
+.genre-search{
+  color:black;
 }

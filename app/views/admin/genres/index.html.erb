@@ -1,37 +1,40 @@
 　　　<p class="notice">
        <%= flash[:success] %>
     </p>
-   <div class="row">
-   <h2>ジャンル一覧・追加</h2>
-	    <%= form_for @genre, :url => {:action => :create} do |f| %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>ジャンル一覧・追加</h2>
+
+	  <%= form_for @genre, :url => {:action => :create} do |f| %>
 	    <h3>ジャンル</h3>
-	    <%= f.text_field :name %>
-	    <div class="field">
-	    	<lavel><%= f.radio_button :is_status, "有効" %>有効</lavel>
-            <lavel><%= f.radio_button :is_status, "無効" %>無効</lavel>
-	        <%= f.submit '追加',class: 'btn btn-primary' %>
-        <% end %>
+      <div class="row form-group">
+        <div class="col-md-5">
+	      <%= f.text_field :name,class:"form-control" %>
         </div>
+      </div>
+	    <div class="field form-group form-inline">
+	    	<lavel><%= f.radio_button :is_status, "有効" %>有効</lavel>
+        <lavel><%= f.radio_button :is_status, "無効" %>無効</lavel>
+	      <%= f.submit '追加',class: 'btn btn-primary btn-sm form-control' %>
+      </div>
+    <% end %>
     <table class="table">
-    <thead>
-    	<tr>
-           <th>ジャンル</th>
-           <th>状態</th>
-           <th></th>
+      <thead>
+    	  <tr class="active">
+         <th>ジャンル</th>
+         <th>状態</th>
+         <th></th>
         </tr>
-     </thead>
-     <tbody>
-     <% @genres.each do |genre| %>
-        <tr>
-        	<td><%= genre.name %></td>
-        	<td><%= genre.is_status %>
-              
-         
-            </td>
-        	<td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
-        </tr>
-     </tbody>
-     <% end %>   	
-     </table>
-     </div>
-</div>     
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <tr>
+          	<td><%= genre.name %></td>
+          	<td><%= genre.is_status %></td>
+          	<td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

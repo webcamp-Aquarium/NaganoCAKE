@@ -18,10 +18,12 @@ class ProductsController < ApplicationController
         @genre = Genre.find(params[:genre_id])
     end
 
+    def price
+    end
+
     private
 
     def valid_genre
         @genres = Genre.where(is_status: true)
     end
-
 end
