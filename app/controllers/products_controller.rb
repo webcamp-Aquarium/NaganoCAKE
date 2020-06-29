@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 
     def search
         @genre = Genre.find(params[:genre_id])
-        if @genre.is_status == '販売中'
+        if @genre.is_status == '有効'
             @products = Product.where(genre_id: params[:genre_id])
         else
             redirect_to products_path
